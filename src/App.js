@@ -3,7 +3,7 @@ import './App.css';
 import React, { Component } from 'react'
 import NavBar from './components/NavBar';
 import News from './components/News';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {Router, Switch, Route, Link } from "react-router-dom";
 import {createBrowserHistory} from 'history';
 export const customHistory = createBrowserHistory();  //This maintains custom history
 export default class App extends Component {
