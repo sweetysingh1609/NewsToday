@@ -32,16 +32,21 @@ export class News extends Component {
     )} - NewsToday`;
   }
   async updateNews() {
+    this.props.setProgress(10);
     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=5bb2de342aca42e7b74da52e2abb9c3f&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
+
     let data = fetch(url);
+    this.props.setProgress(30);
     let parseData = await (await data).json();
+    this.props.setProgress(70);
     console.log(parseData);
     this.setState({
       articles: parseData.articles,
       totalResults: parseData.totalResults,
       loading: false,
     });
+    this.props.setProgress(100);
   }
   async componentDidMount() {
     this.updateNews();
@@ -88,6 +93,7 @@ export class News extends Component {
               {this.state.articles.map((element) => {
                 return (
                   <div className="col-md-4" key={element.url}>
+
                     <NewsItem
                       title={element.title ? element.title.slice(0, 45) : ""}
                       description={
