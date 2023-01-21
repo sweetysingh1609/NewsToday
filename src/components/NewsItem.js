@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { ModalTitle } from "react-bootstrap";
+import React from "react";
 
-export class NewsItem extends Component {
+
+const NewsItem=(props)=> {
   
-  render() {
-    let { title, description, imageUrl, newsUrl,author, date,source } = this.props;
+
+    let { title, description, imageUrl, newsUrl,author, date,source } = props;
     return (
       <div className="container">
         <div className="card my-2 mx-2">
@@ -42,6 +42,6 @@ export class NewsItem extends Component {
       </div>
     );
   }
-}
+
 
 export default NewsItem;

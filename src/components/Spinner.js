@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 // import loading from './loading.gif'
 import load from './load.gif'
 
-export class Spinner extends Component {
+const  Spinner= ()=>{
     
-  render() {
+  
     return (
       <div>
         <img
@@ -17,6 +17,6 @@ export class Spinner extends Component {
       
     );
   }
-}
+
 
 export default Spinner
