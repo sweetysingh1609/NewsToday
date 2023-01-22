@@ -1,25 +1,20 @@
 
 import './App.css';
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import NavBar from './components/NavBar';
 import News from './components/News';
 import {Router, Switch, Route, Link } from "react-router-dom";
 import {createBrowserHistory} from 'history';
 import LoadingBar from "react-top-loading-bar";
-export const customHistory = createBrowserHistory();  //This maintains custom history
-// 5bb2de342aca42e7b74da52e2abb9c3f
-export default class App extends Component {
-  pageSize = 9;
-  apiKey = process.env.REACT_APP_NEWS_API;
+export const customHistory = createBrowserHistory();  
+const App = ()=> {
+  const pageSize = 9;
+  const apiKey = process.env.REACT_APP_NEWS_API;
 
-  state = {
-    progress: 0,
-  };
-  setProgress = (progress) => {
-    this.setState({ progress: progress });
-  };
+  const [progress, setProgress] = useState(0)
+  
 
-  render() {
+
     return (
       <div>
         <Router history={customHistory}>
@@ -27,75 +22,75 @@ export default class App extends Component {
           <LoadingBar
             height={3}
             color="#f11946"
-            progress={this.state.progress}
+            progress={progress}
           />
           <Switch>
             <Route exact path="/">
               <News
-                setProgress={this.setProgress}
-                apiKey={this.apiKey}
+                setProgress={setProgress}
+                apiKey={apiKey}
                 key="general"
-                pageSize={this.pageSize}
+                pageSize={pageSize}
                 country="in"
                 category="general"
               />
             </Route>
             <Route exact path="/business">
               <News
-                setProgress={this.setProgress}
-                apiKey={this.apiKey}
+                setProgress={setProgress}
+                apiKey={apiKey}
                 key="business"
-                pageSize={this.pageSize}
+                pageSize={pageSize}
                 country="in"
                 category="business"
               />
             </Route>
             <Route exact path="/entertainment">
               <News
-                setProgress={this.setProgress}
-                apiKey={this.apiKey}
+                setProgress={setProgress}
+                apiKey={apiKey}
                 key="entertainment"
-                pageSize={this.pageSize}
+                pageSize={pageSize}
                 country="in"
                 category="entertainment"
               />
             </Route>
             <Route exact path="/health">
               <News
-                setProgress={this.setProgress}
-                apiKey={this.apiKey}
+                setProgress={setProgress}
+                apiKey={apiKey}
                 key="health"
-                pageSize={this.pageSize}
+                pageSize={pageSize}
                 country="in"
                 category="health"
               />
             </Route>
             <Route exact path="/science">
               <News
-                setProgress={this.setProgress}
-                apiKey={this.apiKey}
+                setProgress={setProgress}
+                apiKey={apiKey}
                 key="science"
-                pageSize={this.pageSize}
+                pageSize={pageSize}
                 country="in"
                 category="science"
               />
             </Route>
             <Route exact path="/sports">
               <News
-                setProgress={this.setProgress}
-                apiKey={this.apiKey}
+                setProgress={setProgress}
+                apiKey={apiKey}
                 key="sports"
-                pageSize={this.pageSize}
+                pageSize={pageSize}
                 country="in"
                 category="sports"
               />
             </Route>
             <Route exact path="/technology">
               <News
-                setProgress={this.setProgress}
-                apiKey={this.apiKey}
+                setProgress={setProgress}
+                apiKey={apiKey}
                 key="technology"
-                pageSize={this.pageSize}
+                pageSize={pageSize}
                 country="in"
                 category="technology"
               />
@@ -104,6 +99,7 @@ export default class App extends Component {
         </Router>
       </div>
     );
-  }
+  
 }
+export default App;
 
